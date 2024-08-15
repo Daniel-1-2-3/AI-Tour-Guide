@@ -1,10 +1,12 @@
 
-const informationPg = () => {
+const InformationPg = () => {
   return (
-    <div>
-      <p>info</p>
+    <div className='bg-yellow-100 justify-center'>
+      <div>
+        <p className='text-center'>info</p>
+      </div>
     </div>
   )
 }
 
-export default informationPg
+export default InformationPg

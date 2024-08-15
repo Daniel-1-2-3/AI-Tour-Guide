@@ -1,7 +1,10 @@
+import InformationPg from './pages/informationPg'
+import CameraPg from './pages/cameraPg'
+
 const App = () => {
   return (
-    <div className='bg-red-500'>
-      hello
+    <div>
+      <CameraPg />
     </div>
   )
 }
