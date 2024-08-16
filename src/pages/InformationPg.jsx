@@ -105,8 +105,15 @@ const InformationPg = ({photo=null, apiKey=''}) => {
       <NavBar cameraPage={false} />
       <div className='min-h-screen bg-gray-950 justify-center p-3'>
         { isLoading ?
-          <div className='min-w-screen min-h-screen flex justify-center items-center'>
-            <Spinner />
+          <div className='flex flex-col w-screen min-h-screen'>
+            <div className='flex'>
+              <div className='w-full flex justify-center bg-gray-950'>
+                {photoUrl && <img className='rounded-t-2xl object-center w-3/4 mt-8' src={photoUrl} alt="Captured Frame" />}
+              </div>
+            </div>
+            <div className='flex justify-center items-center mt-10'>
+              <Spinner />
+            </div>
           </div>
           :
           <>

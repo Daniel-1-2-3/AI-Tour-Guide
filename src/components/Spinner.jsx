@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 const Spinner = () => {
     const override = {
             display: 'block',
-            margin: '50px auto'
     }
 
     return (
@@ -12,7 +11,7 @@ const Spinner = () => {
             color = '#4338ca'
             loading={true}
             cssOverride={override}
-            size={150}
+            size={50}
         />
     )
 }

@@ -21,7 +21,7 @@ const SubBox = ({subtitle, text}) => {
     const contract = () => {
       let idx = 0;
       let descriptionTemp = text;
-      for (let i = 0; i<15; i++){
+      for (let i = 0; i<8; i++){
         idx = idx + descriptionTemp.indexOf(' ') + 1;
         descriptionTemp = descriptionTemp.slice(descriptionTemp.indexOf(' ') + 1);
       }
@@ -37,7 +37,7 @@ const SubBox = ({subtitle, text}) => {
   }, [text])
 
   return (
-    <div className='w-4/5 flex flex-col justify-center bg-white mt-3 p-3 rounded-2xl'>
+    <div className='w-4/5 flex flex-col justify-center bg-gray-200 mt-3 p-3 rounded-2xl'>
        <p className='text-indigo-900 font-semibold text-center'>{subtitle}</p>
        <p className='pt-2 pb-3 px-3'>{description}</p>
        <button onClick={switchLen} className='text-sm text-gray-600 focus:text-gray-700'>
