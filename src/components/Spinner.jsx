@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const Spinner = () => {
     const override = {
             display: 'block',
-            margin: '100px auto'
+            margin: '50px auto'
     }
 
     return (
