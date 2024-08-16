@@ -67,10 +67,10 @@ const CameraPg = ({setPhoto}) => {
     return (
         <>
             <NavBar cameraPage={true}/>
-            <div className='max-h-screen overflow-hidden'>
+            <div className='max-h-screen overflow-scroll'>
                 <div className='flex min-h-screen bg-black justify-center p-0'>
-                    <div className='w-3/4 items-center justify-center mb-14 mt-3'>
-                        <div className='overflow-hidden z-10'>
+                    <div className='w-4/5 items-center justify-center mb-14 mt-3'>
+                        <div className='overflow-hidden z-10 rounded-lg'>
                             <video
                                 ref={videoRef}
                                 autoPlay
@@ -81,23 +81,23 @@ const CameraPg = ({setPhoto}) => {
                                         transformOrigin: 'center center'}}
                             >
                             </video>
+                            <div className='flex justify-center -mt-10 pb-10 w-full'>
+                                <input type="range" id="zoom-slider" min={1} max={3} step={0.025} value={zoom} onChange={(event) => setZoom(event.target.value)} 
+                                    style={{
+                                        WebkitAppearance: 'none', /* Remove default appearance on WebKit browsers */
+                                        appearance: 'none',
+                                        width: '50%', 
+                                        height: '15px',
+                                        background: 'gray', 
+                                        opacity: '70%',
+                                        borderRadius: '5px', 
+                                        scale: '1.3',
+                                    }}
+                                />
+                            </div>
                         </div>
                         {isStreaming && 
                             <>
-                                <div className='flex justify-center absolute left-1/2 transform -translate-x-1/2 bottom-36 w-full'>
-                                    <input type="range" id="zoom-slider" min={1} max={3} step={0.025} value={zoom} onChange={(event) => setZoom(event.target.value)} 
-                                            style={{
-                                                WebkitAppearance: 'none', /* Remove default appearance on WebKit browsers */
-                                                appearance: 'none',
-                                                width: '50%', 
-                                                height: '15px',
-                                                background: 'gray', 
-                                                opacity: '70%',
-                                                borderRadius: '5px', 
-                                                scale: '1.3',
-                                            }}
-                                    />
-                                </div>
                                 <div className='flex justify-center text-center items-center bg-black p-4'>
                                     <button
                                         className={`flex h-20 w-20 focus:outline-none ${buttonColor} border-4 border-zinc-400 rounded-3xl items-center justify-center`}

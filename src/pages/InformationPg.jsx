@@ -103,12 +103,12 @@ const InformationPg = ({photo=null, apiKey=''}) => {
   return (
     <>
       <NavBar cameraPage={false} />
-      <div className='min-h-screen bg-gray-950 justify-center p-3'>
+      <div className='min-h-screen min-w-screen bg-gray-950 justify-center p-3'>
         { isLoading ?
-          <div className='flex flex-col w-screen min-h-screen'>
+          <div className='flex flex-col w-screen max-h-screen'>
             <div className='flex'>
-              <div className='w-full flex justify-center bg-gray-950'>
-                {photoUrl && <img className='rounded-t-2xl object-center w-3/4 mt-3' src={photoUrl} alt="Captured Frame" />}
+              <div className='w-screen flex justify-center bg-gray-950'>
+                {photoUrl && <img className='rounded-t-2xl object-center w-4/5 mt-3' src={photoUrl} alt="Captured Frame" />}
               </div>
             </div>
             <div className='flex justify-center items-center mt-7'>
@@ -118,13 +118,13 @@ const InformationPg = ({photo=null, apiKey=''}) => {
           :
           <>
             <div className='flex'>
-              <div className='w-full flex items-center justify-center bg-gray-950'>
-                {photoUrl && <img className='rounded-t-2xl object-center w-3/4 mt-8' src={photoUrl} alt="Captured Frame" />}
+              <div className='w-screen flex items-center justify-center bg-gray-950'>
+                {photoUrl && <img className='rounded-t-2xl object-center w-4/5 mt-8' src={photoUrl} alt="Captured Frame" />}
               </div>
             </div>
             <div className='flex justify-center'>
               <div className='w-full bg-transparent flex justify-center items-center'>
-                <div className='w-3/4 bg-gray-600 rounded-b-2xl items-center'>
+                <div className='w-4/5 bg-gray-600 rounded-b-2xl items-center'>
                   <p className='text-white font-semibold text-md text-center p-2'>{title}</p>
                 </div>
               </div>
