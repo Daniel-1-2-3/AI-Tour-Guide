@@ -89,7 +89,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
 
         let title = (notes.slice(notes.indexOf('[')+1, notes.indexOf(']')))
         if (notes.indexOf('[') < 0){
-          setTitle(notes.slice(0, notes.indexOf(':')));
+          setTitle(notes.slice(0, notes.indexOf('1.**')));
         } else {
           setTitle(title.charAt(0).toUpperCase() + title.slice(1));
         }
@@ -104,10 +104,6 @@ const InformationPg = ({photo=null, apiKey=''}) => {
     <>
       <NavBar cameraPage={false} />
       <div className='min-h-screen bg-gray-950 justify-center p-3'>
-        { isLoading ?
-          <p>LOADING</p>
-          :
-          <>
             <div className='flex'>
               <div className='w-full flex items-center justify-center bg-gray-950'>
                 {photoUrl && <img className='rounded-t-2xl object-center w-3/4 mt-8' src={photoUrl} alt="Captured Frame" />}
@@ -119,8 +115,6 @@ const InformationPg = ({photo=null, apiKey=''}) => {
               </div>
             </div>
             {information && <InfoBox info={information}/>}
-          </>
-        }
       </div>
     </>
   )
