@@ -46,6 +46,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
       to see if it is any of those. If the image case 1 (depicts scenery, but isn't a known attraction) or case 2(does not depict scenery), just give the man focus and 6 facts as best you can about the place in question by looking at the picture and coordinates.`
 
       setIsLoading(true);
+      alert(isLoading)
       if (photoUrl){
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
           method: 'POST',
@@ -94,6 +95,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
           setTitle(title.charAt(0).toUpperCase() + title.slice(1));
         }
         setIsLoading(false);
+        alert(isLoading)
       }
     }
 
