@@ -11,6 +11,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
   const [information, setInformation] = useState(null);
   const [title, setTitle] = useState('');
   const [isLoading, setIsLoading] = useState(false)
+  alert(photoUrl.slice(0, 30))
   
   const getCoordinates = () => {
     return new Promise((resolve, reject) => {
@@ -30,6 +31,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
 
   useEffect(() => {
     const fetchInfo = async() => {
+      alert('fetching')
       const coords = await getCoordinates()
       //const coords = [44.7165, -110.4185] 
       const geyser_coords = "Geysers: (Old Faithful: 44.4595, -110.8281; Castle Geyser: 44.4616, -110.8320; Grand Geyser: 44.4600, -110.8318; Beehive Geyser: 44.4610, -110.8322; Daisy Geyser: 44.4593, -110.8287; Lone Star Geyser: 44.5424, -110.4440; Steamboat Geyser: 44.7160, -110.4190; Grotto Geyser: 44.4575, -110.8303)"
@@ -46,7 +48,6 @@ const InformationPg = ({photo=null, apiKey=''}) => {
       to see if it is any of those. If the image case 1 (depicts scenery, but isn't a known attraction) or case 2(does not depict scenery), just give the man focus and 6 facts as best you can about the place in question by looking at the picture and coordinates.`
 
       setIsLoading(true);
-      alert(isLoading)
       if (photoUrl){
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
           method: 'POST',
@@ -95,7 +96,6 @@ const InformationPg = ({photo=null, apiKey=''}) => {
           setTitle(title.charAt(0).toUpperCase() + title.slice(1));
         }
         setIsLoading(false);
-        alert(isLoading)
       }
     }
 
