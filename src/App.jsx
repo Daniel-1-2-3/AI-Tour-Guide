@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
-import { useState, useEffect } from 'react'
-import InformationPg from './pages/InformationPg';
+import { useState, useEffect } from 'react';
 import CameraPg from './pages/CameraPg';
+import InformationPg from './pages/informationPg';
 
 function App() {
   const [photo, setPhoto] = useState(null);
