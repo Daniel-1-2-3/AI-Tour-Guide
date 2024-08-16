@@ -114,7 +114,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
               </div>
             </div>
             <div className='w-full bg-transparent flex justify-center items-center'>
-              <div className='w-3/4 bg-gray-600 rounded-b-xl items-center'>
+              <div className='w-3/4 bg-gray-600 rounded-b-2xl items-center'>
                 <p className='text-white font-semibold text-md text-center p-2'>{title}</p>
               </div>
             </div>
