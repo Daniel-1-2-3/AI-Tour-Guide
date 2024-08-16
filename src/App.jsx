@@ -6,7 +6,7 @@ import NavBar from './components/NavBar';
 
 function App() {
   const [photo, setPhoto] = useState(null);
-  let OPENAI_API_KEY = useRef(null);
+  const [OPENAI_API_KEY, setOPENAI_API_KEY] = useState(null);
   useEffect(() => {
     const fetchKey = async () => {
       //get the openai key
@@ -15,7 +15,7 @@ function App() {
         throw new Error('Network response was not ok');
       }          
       const data = await response.json();
-      OPENAI_API_KEY.current = data.api_key;
+      setOPENAI_API_KEY(data.api_key)
     }
     fetchKey()
   }, [])
@@ -23,7 +23,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<CameraPg setPhoto={setPhoto} />} />
-      <Route path="/info" element={<InformationPg photo={photo} apiKey={OPENAI_API_KEY.current} />} />
+      {OPENAI_API_KEY && <Route path="/info" element={<InformationPg photo={photo} apiKey={OPENAI_API_KEY.current} />} />}
     </Routes>
   );
 }
