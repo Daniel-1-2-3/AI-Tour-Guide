@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import InfoBox from '../components/InfoBox'
 import NavBar from '../components/NavBar'
+import Spinner from '../components/Spinner'
 
 const InformationPg = ({photo=null, apiKey=''}) => {
   const photoUrl = photo;
@@ -29,7 +30,6 @@ const InformationPg = ({photo=null, apiKey=''}) => {
 
   useEffect(() => {
     const fetchInfo = async() => {
-      alert('fetching')
       const coords = await getCoordinates()
       //const coords = [44.7165, -110.4185] 
       const geyser_coords = "Geysers: (Old Faithful: 44.4595, -110.8281; Castle Geyser: 44.4616, -110.8320; Grand Geyser: 44.4600, -110.8318; Beehive Geyser: 44.4610, -110.8322; Daisy Geyser: 44.4593, -110.8287; Lone Star Geyser: 44.5424, -110.4440; Steamboat Geyser: 44.7160, -110.4190; Grotto Geyser: 44.4575, -110.8303)"
@@ -89,7 +89,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
 
         let title = (notes.slice(notes.indexOf('[')+1, notes.indexOf(']')))
         if (notes.indexOf('[') < 0){
-          setTitle(notes.slice(0, notes.indexOf('1.**')));
+          setTitle(notes.slice(0, notes.indexOf('1.')));
         } else {
           setTitle(title.charAt(0).toUpperCase() + title.slice(1));
         }
@@ -104,6 +104,10 @@ const InformationPg = ({photo=null, apiKey=''}) => {
     <>
       <NavBar cameraPage={false} />
       <div className='min-h-screen bg-gray-950 justify-center p-3'>
+        { isLoading ?
+          <Spinner /> 
+          :
+          <>
             <div className='flex'>
               <div className='w-full flex items-center justify-center bg-gray-950'>
                 {photoUrl && <img className='rounded-t-2xl object-center w-3/4 mt-8' src={photoUrl} alt="Captured Frame" />}
@@ -115,6 +119,8 @@ const InformationPg = ({photo=null, apiKey=''}) => {
               </div>
             </div>
             {information && <InfoBox info={information}/>}
+          </>
+        }
       </div>
     </>
   )
