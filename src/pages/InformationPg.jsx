@@ -105,7 +105,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
       <NavBar cameraPage={false} />
       <div className='min-h-screen bg-gray-950 justify-center p-3'>
         { isLoading ?
-          <Spinner /> 
+          <p>LOADING</p>
           :
           <>
             <div className='flex'>
