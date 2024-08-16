@@ -69,7 +69,7 @@ const CameraPg = ({setPhoto}) => {
             <NavBar cameraPage={true}/>
             <div className='max-h-screen overflow-hidden'>
                 <div className='flex max-h-screen bg-gray-950 justify-center p-0'>
-                    <div className='w-3/5 items-center justify-center mb-14 mt-3'>
+                    <div className='w-4/5 items-center justify-center mb-14 mt-3'>
                         <div className='overflow-hidden z-10 rounded-lg'>
                             <video
                                 ref={videoRef}
@@ -98,7 +98,7 @@ const CameraPg = ({setPhoto}) => {
                         </div>
                         {isStreaming && 
                             <>
-                                <div className='flex justify-center text-center items-center bg-black p-4'>
+                                <div className='flex justify-center text-center items-center bg-gray-950 p-4'>
                                     <button
                                         className={`flex h-20 w-20 focus:outline-none ${buttonColor} border-4 border-zinc-400 rounded-3xl items-center justify-center`}
                                         onClick={capturePhoto}
