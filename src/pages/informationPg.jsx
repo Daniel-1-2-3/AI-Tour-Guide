@@ -88,7 +88,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
     }
 
     fetchInfo();
-  }, [photoUrl, OPENAI_API_KEY])
+  }, [OPENAI_API_KEY])
 
   return (
     <>
@@ -99,7 +99,6 @@ const InformationPg = ({photo=null, apiKey=''}) => {
             {photoUrl && <img className='rounded-2xl object-center w-3/4 mt-8' src={photoUrl} alt="Captured Frame" />}
           </div>
         </div>
-        <p className='text-white'>{information}</p>
         {information && <InfoBox info={information}/>}
       </div>
     </>
