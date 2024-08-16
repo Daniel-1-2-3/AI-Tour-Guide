@@ -23,7 +23,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<CameraPg setPhoto={setPhoto} />} />
-      {OPENAI_API_KEY && <Route path="/info" element={<InformationPg photo={photo} apiKey={OPENAI_API_KEY.current} />} />}
+      {OPENAI_API_KEY && <Route path="/info" element={<InformationPg photo={photo} apiKey={OPENAI_API_KEY} />} />}
     </Routes>
   );
 }
