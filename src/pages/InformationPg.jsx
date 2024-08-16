@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import InfoBox from '../components/InfoBox'
 import NavBar from '../components/NavBar'
-import Spinner from '../components/Spinner'
 
 const InformationPg = ({photo=null, apiKey=''}) => {
   const photoUrl = photo;
