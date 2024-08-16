@@ -113,8 +113,8 @@ const InformationPg = ({photo=null, apiKey=''}) => {
                 {photoUrl && <img className='rounded-2xl object-center w-3/4 mt-8' src={photoUrl} alt="Captured Frame" />}
               </div>
             </div>
-            <div className='w-full bg-transparent flex justify-center align-middle p-2'>
-              <div className='w-3/4 bg-gray-600 p-3 rounded-xl align-middle'>
+            <div className='w-full bg-transparent flex justify-center align-middle'>
+              <div className='w-3/4 bg-gray-600 p-3 rounded-x l align-middle'>
                 <p className='text-white font-semibold text-md text-center mt-3'>{title}</p>
               </div>
             </div>
