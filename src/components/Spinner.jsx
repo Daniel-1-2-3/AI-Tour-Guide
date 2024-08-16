@@ -1,7 +1,7 @@
 import ClipLoader from 'react-spinners/ClipLoader'
 import PropTypes from 'prop-types'
 
-const Spinner = ( {loading} ) => {
+const Spinner = () => {
     const override = {
             display: 'block',
             margin: '50px auto'
@@ -10,7 +10,7 @@ const Spinner = ( {loading} ) => {
     return (
         <ClipLoader 
             color = '#4338ca'
-            loading={loading}
+            loading={true}
             cssOverride={override}
             size={150}
         />
@@ -18,7 +18,7 @@ const Spinner = ( {loading} ) => {
 }
 
 Spinner.propTypes  = {
-    loading: PropTypes.bool.isRequired,
+    loading: PropTypes.bool,
 }
 
 

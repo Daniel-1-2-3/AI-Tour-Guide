@@ -41,7 +41,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
       const coordReferences = `Coordinate References -> ${geyser_coords}, ${hot_spring_coords}, ${waterfall_coords}, ${mud_pot_coords}, ${basin_coords}, ${valley_coords}`
 
       const prompt = `This picture was taken at coordinates (${coords[0]}${coords[1]}). 
-      Give 6 cool facts and/or details about the main focus of this picture (REQUIRMENTS: Put what the main focus is in [] brackets), that should be a balance between scientific facts and quirks that may interest younger children. 
+      Give 6 cool facts and/or as much details as you can about the main focus of this picture (REQUIRMENTS: Put what the main focus is in [] brackets), that should be a balance between scientific facts and quirks that may interest younger children. 
       Identifying what this picture is depicting, please be specific as possible about the location. If it is an attraction site, compare the picture's location/coordinates with these coordinates: ${coordReferences}
       to see if it is any of those. If the image case 1 (depicts scenery, but isn't a known attraction) or case 2(does not depict scenery), just give the man focus and 6 facts as best you can about the place in question by looking at the picture and coordinates.`
 
@@ -74,7 +74,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
                   ]
                 }
               ],
-              max_tokens: 1000,
+              max_tokens: 500,
           }),
         });
 
@@ -105,7 +105,9 @@ const InformationPg = ({photo=null, apiKey=''}) => {
       <NavBar cameraPage={false} />
       <div className='min-h-screen bg-gray-950 justify-center p-3'>
         { isLoading ?
-          <Spinner /> 
+          <div className='min-w-screen min-h-screen flex justify-center items-center'>
+            <Spinner />
+          </div>
           :
           <>
             <div className='flex'>
@@ -113,9 +115,11 @@ const InformationPg = ({photo=null, apiKey=''}) => {
                 {photoUrl && <img className='rounded-t-2xl object-center w-3/4 mt-8' src={photoUrl} alt="Captured Frame" />}
               </div>
             </div>
-            <div className='w-full bg-transparent flex justify-center items-center'>
-              <div className='w-3/4 bg-gray-600 rounded-b-2xl items-center'>
-                <p className='text-white font-semibold text-md text-center p-2'>{title}</p>
+            <div className='flex justify-center'>
+              <div className='w-full bg-transparent flex justify-center items-center'>
+                <div className='w-3/4 bg-gray-600 rounded-b-2xl items-center'>
+                  <p className='text-white font-semibold text-md text-center p-2'>{title}</p>
+                </div>
               </div>
             </div>
             {information && <InfoBox info={information}/>}
