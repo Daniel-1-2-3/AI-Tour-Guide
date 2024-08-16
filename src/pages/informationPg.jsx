@@ -8,7 +8,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
   //const photoUrl = photo;
   const photoUrl = 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/63/bd/95/artists-paintpots.jpg?w=1200&h=-1&s=1'
   const OPENAI_API_KEY = apiKey;
-  const [information, setInformation] = useState('');
+  const [information, setInformation] = useState(null);
   
   const getCoordinates = () => {
     return new Promise((resolve, reject) => {
@@ -99,7 +99,8 @@ const InformationPg = ({photo=null, apiKey=''}) => {
             {photoUrl && <img className='rounded-2xl object-center w-3/4 mt-8' src={photoUrl} alt="Captured Frame" />}
           </div>
         </div>
-        <InfoBox info={information}/>
+        <p className='text-white'>{information}</p>
+        {information && <InfoBox info={information}/>}
       </div>
     </>
   )
@@ -107,7 +108,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
 
 InformationPg.propTypes = {
   photo: PropTypes.string,
-  apiKey: PropTypes.string.isRequired,
+  apiKey: PropTypes.string,
 }
 
 export default InformationPg
