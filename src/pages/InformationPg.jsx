@@ -10,7 +10,6 @@ const InformationPg = ({photo=null, apiKey=''}) => {
   const [information, setInformation] = useState(null);
   const [title, setTitle] = useState('');
   const [isLoading, setIsLoading] = useState(false)
-  alert(photoUrl.slice(0, 30))
   
   const getCoordinates = () => {
     return new Promise((resolve, reject) => {
