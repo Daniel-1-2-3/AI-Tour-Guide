@@ -4,8 +4,8 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types'
 
 const NavBar = ({cameraPage=true}) => {
-    const camLinkColor = cameraPage ? 'bg-gray-950' : 'bg-gray-900';
-    const infoLinkColor = cameraPage ? 'bg-gray-900' : 'bg-gray-950';
+    const camLinkColor = cameraPage ? 'bg-black' : 'bg-gray-900';
+    const infoLinkColor = cameraPage ? 'bg-gray-900' : 'bg-black';
     return (
         <div className='w-full flex'>
             <Link to='/' className={`text-slate-200 ${camLinkColor} w-1/2 py-2 flex justify-center items-center`}>
