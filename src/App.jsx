@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import CameraPg from './pages/CameraPg';
+import CameraPg from './pages/cameraPg';
 import InformationPg from './pages/informationPg';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   const [OPENAI_API_KEY, setOPENAI_API_KEY] = useState(null);
   useEffect(() => {
     const fetchKey = async () => {
-      //get the openai key
+      //get the openai key from pythonanywhere api
       const response = await fetch('https://daneel.pythonanywhere.com/api', {method: 'POST'});        
       if (!response.ok) {
         throw new Error('Network response was not ok');
