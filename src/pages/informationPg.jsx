@@ -24,7 +24,15 @@ const InformationPg = ({photo=null}) => {
   };
 
   useEffect(() => {
-    const fetchInfo = async(OPENAI_API_KEY) => {
+    const fetchInfo = async() => {
+      //get the openai key
+      const response = await fetch('https://daneel.pythonanywhere.com/api/get-api-key');        
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }          
+      const data = await response.json();
+      const OPENAI_API_KEY = data.api_key
+
       //const coords = await getCoordinates()
       const coords = [44.6418, -110.5382] 
       const geyser_coords = "Geysers: (Old Faithful: 44.4595, -110.8281; Castle Geyser: 44.4616, -110.8320; Grand Geyser: 44.4600, -110.8318; Beehive Geyser: 44.4610, -110.8322; Daisy Geyser: 44.4593, -110.8287; Lone Star Geyser: 44.5424, -110.4440; Steamboat Geyser: 44.7160, -110.4190; Grotto Geyser: 44.4575, -110.8303)"
@@ -82,9 +90,8 @@ const InformationPg = ({photo=null}) => {
         setInformation(notes)
       }
     }
-    
-    const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
-    fetchInfo(OPENAI_API_KEY);
+
+    fetchInfo();
   }, [photoUrl])
 
   return (
