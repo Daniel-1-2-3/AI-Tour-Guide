@@ -69,7 +69,7 @@ const CameraPg = ({setPhoto}) => {
             <NavBar cameraPage={true}/>
             <div className='max-h-screen overflow-scroll'>
                 <div className='flex min-h-screen bg-black justify-center p-0'>
-                    <div className='w-4/5 items-center justify-center mb-14 mt-3'>
+                    <div className='w-4/5 items-center justify-center mb-10 mt-2'>
                         <div className='overflow-hidden z-10 rounded-lg'>
                             <video
                                 ref={videoRef}
@@ -98,12 +98,12 @@ const CameraPg = ({setPhoto}) => {
                         </div>
                         {isStreaming && 
                             <>
-                                <div className='flex justify-center text-center items-center bg-black p-4'>
+                                <div className='flex justify-center text-center items-center bg-black'>
                                     <button
-                                        className={`flex h-18 w-18 focus:outline-none ${buttonColor} border-4 border-zinc-400 rounded-2xl items-center justify-center`}
+                                        className={`flex h-20 w-20 focus:outline-none ${buttonColor} border-4 border-zinc-400 rounded-2xl items-center justify-center`}
                                         onClick={capturePhoto}
                                     >
-                                        <div className='h-14 w-14 opacity-100 border-4 border-zinc-500 rounded-xl' />
+                                        <div className='h-16 w-16 opacity-100 border-4 border-zinc-500 rounded-xl' />
                                     </button>
                                 </div>
                             </>
