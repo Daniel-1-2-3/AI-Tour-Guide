@@ -45,6 +45,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
       to see if it is any of those.`
 
       if (photoUrl){
+        console.log(photoUrl)
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
           method: 'POST',
           headers: {
