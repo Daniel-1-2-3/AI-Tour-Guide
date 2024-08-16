@@ -1,12 +1,17 @@
-import InformationPg from './pages/informationPg'
-import CameraPg from './pages/cameraPg'
+import { Route, Routes } from 'react-router-dom';
+import { useState } from 'react'
+import InformationPg from './pages/informationPg';
+import CameraPg from './pages/cameraPg';
 
-const App = () => {
+function App() {
+  const [photo, setPhoto] = useState(null);
+
   return (
-    <div>
-      <CameraPg />
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<CameraPg setPhoto={setPhoto}/>} />
+      <Route path="/info" element={<InformationPg photo={photo}/>} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
