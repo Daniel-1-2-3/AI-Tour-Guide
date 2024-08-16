@@ -110,12 +110,12 @@ const InformationPg = ({photo=null, apiKey=''}) => {
           <>
             <div className='flex'>
               <div className='w-full flex items-center justify-center bg-gray-950'>
-                {photoUrl && <img className='rounded-2xl object-center w-3/4 mt-8' src={photoUrl} alt="Captured Frame" />}
+                {photoUrl && <img className='rounded-t-2xl object-center w-3/4 mt-8' src={photoUrl} alt="Captured Frame" />}
               </div>
             </div>
-            <div className='w-full bg-transparent flex justify-center align-middle'>
-              <div className='w-3/4 bg-gray-600 p-3 rounded-x l align-middle'>
-                <p className='text-white font-semibold text-md text-center mt-3'>{title}</p>
+            <div className='w-full bg-transparent flex justify-center items-center'>
+              <div className='w-3/4 bg-gray-600 rounded-b-xl items-center'>
+                <p className='text-white font-semibold text-md text-center p-2'>{title}</p>
               </div>
             </div>
             {information && <InfoBox info={information}/>}
