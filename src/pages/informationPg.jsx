@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import InfoBox from '../components/infoBox'
+import NavBar from '../components/NavBar'
 
-const InformationPg = ({photo=null}) => {
+const InformationPg = ({photo=null, apiKey=''}) => {
   //const photoUrl = photo;
-  const photoUrl = 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/63/bd/95/artists-paintpots.jpg?w=1200&h=-1&s=1';
+  const photoUrl = 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/63/bd/95/artists-paintpots.jpg?w=1200&h=-1&s=1'
+  const OPENAI_API_KEY = apiKey;
   const [information, setInformation] = useState('');
   
   const getCoordinates = () => {
@@ -25,13 +28,6 @@ const InformationPg = ({photo=null}) => {
 
   useEffect(() => {
     const fetchInfo = async() => {
-      //get the openai key
-      const response = await fetch('https://daneel.pythonanywhere.com/api/get-api-key');        
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }          
-      const data = await response.json();
-      const OPENAI_API_KEY = data.api_key
 
       //const coords = await getCoordinates()
       const coords = [44.6418, -110.5382] 
@@ -92,25 +88,26 @@ const InformationPg = ({photo=null}) => {
     }
 
     fetchInfo();
-  }, [photoUrl])
+  }, [photoUrl, OPENAI_API_KEY])
 
   return (
-    <div className='bg-yellow-100 justify-center'>
-      <div>
-        <Link to='/' className='text-white bg-indigo-700 hover:bg-indigo-900 rounded px-3 py-2 mt-4'>
-            Go Back
-        </Link>
-        <p className='text-center'>{information}</p>
-        <div className='w-full flex items-center justify-center bg-black'>
-          {photoUrl && <img className='rounded-2xl object-center w-3/4 mt-8' src={photoUrl} alt="Captured Frame" />}
+    <>
+      <NavBar cameraPage={false} />
+      <div className='bg-black justify-center p-3'>
+        <div className='flex'>
+          <div className='w-full flex items-center justify-center bg-black'>
+            {photoUrl && <img className='rounded-2xl object-center w-3/4 mt-8' src={photoUrl} alt="Captured Frame" />}
+          </div>
         </div>
+        <InfoBox info={information}/>
       </div>
-    </div>
+    </>
   )
 }
 
 InformationPg.propTypes = {
   photo: PropTypes.string,
+  apiKey: PropTypes.string.isRequired,
 }
 
 export default InformationPg

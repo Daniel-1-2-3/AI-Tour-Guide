@@ -13,6 +13,8 @@
   },
   "homepage": "https://Daniel-1-2-3.github.io/AI-Tour-Guide/",
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@react-native-community/slider": "^4.5.2",
     "openapi": "^1.0.1",
     "react": "^18.3.1",
