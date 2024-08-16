@@ -1,0 +1,40 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks out your repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Sets up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'  # Use the Node.js version your project requires
+
+      # Installs dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Builds the project
+      - name: Build the project
+        run: npm run build
+        env:
+          VITE_OPENAI_API_KEY: ${{ secrets.VITE_OPENAI_API_KEY }}  # Inject your secret
+
+      # Deploys to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for deployment
+          publish_dir: ./dist  # Directory where your build files are located
