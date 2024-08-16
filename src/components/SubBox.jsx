@@ -21,15 +21,12 @@ const SubBox = ({subtitle, text}) => {
     const contract = () => {
       let idx = 0;
       let descriptionTemp = text;
-      console.log(descriptionTemp)
       for (let i = 0; i<15; i++){
         idx = idx + descriptionTemp.indexOf(' ') + 1;
-        console.log(idx)
         descriptionTemp = descriptionTemp.slice(descriptionTemp.indexOf(' ') + 1);
       }
       let truncatedText = text.slice(0, idx-1)
       if ('!,.?;'.indexOf(truncatedText.charAt(truncatedText.length-1)) != -1){
-        console.log('found')
         truncatedText = truncatedText.slice(0, truncatedText.length-1);
       };
       return (truncatedText.concat('...'))
