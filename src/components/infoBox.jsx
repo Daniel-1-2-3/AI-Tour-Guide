@@ -23,7 +23,7 @@ const InfoBox = ({info=''}) => {
   }
   const [textList, subtitles] = extract(information) 
   return (
-    <div className='bg-indigo-950 text-center'>
+    <div className='bg-gray-950 text-center'>
       {textList.map((item, index) => (
         <div key={index}>
           <SubBox subtitle = {subtitles[index]} text = {item}/>
