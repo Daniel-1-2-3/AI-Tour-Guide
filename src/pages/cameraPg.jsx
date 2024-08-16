@@ -69,7 +69,7 @@ const CameraPg = ({setPhoto}) => {
             <NavBar cameraPage={true}/>
             <div className='max-h-screen overflow-hidden'>
                 <div className='flex min-h-screen bg-black justify-center p-0'>
-                    <div className='w-4/5 items-center justify-center mb-14 mt-5'>
+                    <div className='w-3/4 items-center justify-center mb-14 mt-5'>
                         <div className='overflow-hidden z-10'>
                             <video
                                 ref={videoRef}
