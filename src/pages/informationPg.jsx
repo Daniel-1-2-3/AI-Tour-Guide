@@ -89,7 +89,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
     }
 
     fetchInfo();
-  }, [OPENAI_API_KEY])
+  }, [OPENAI_API_KEY, photoUrl])
 
   return (
     <>
