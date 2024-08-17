@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import NavBar from '../components/NavBar';
 
-const CameraPg = ({setPhoto}) => {
+const CameraPg = ({setPhoto, setManualLocation, manualLocation}) => {
     const [buttonColor, setButtonColor] = useState('bg-gray-200')
     const videoRef = useRef(null);
     const [zoom, setZoom] = useState(1);
@@ -68,9 +68,9 @@ const CameraPg = ({setPhoto}) => {
         <>
             <NavBar cameraPage={true}/>
             <div className='max-h-screen overflow-scroll'>
-                <div className='flex min-h-screen bg-black justify-center p-0'>
-                    <div className='w-4/5 items-center justify-center mb-10 mt-2'>
-                        <div className='overflow-hidden z-10 rounded-lg'>
+                <div className='flex min-h-screen bg-gray-950 justify-center p-0'>
+                    <div className='w-4/5 items-center justify-center mt-2'>
+                        <div className='overflow-hidden rounded-lg'>
                             <video
                                 ref={videoRef}
                                 autoPlay
@@ -81,7 +81,7 @@ const CameraPg = ({setPhoto}) => {
                                         transformOrigin: 'center center'}}
                             >
                             </video>
-                            <div className='flex justify-center -mt-10 pb-10 w-full'>
+                            <div className='flex flex-col -mt-20 justify-center items-center w-full'>
                                 <input type="range" id="zoom-slider" min={1} max={3} step={0.025} value={zoom} onChange={(event) => setZoom(event.target.value)} 
                                     style={{
                                         WebkitAppearance: 'none', /* Remove default appearance on WebKit browsers */
@@ -94,11 +94,18 @@ const CameraPg = ({setPhoto}) => {
                                         scale: '1.3',
                                     }}
                                 />
+                                <div className='h-5'></div>
                             </div>
                         </div>
                         {isStreaming && 
                             <>
-                                <div className='flex justify-center text-center items-center bg-black'>
+                                <div className='flex justify-center text-center items-center bg-gray-9 pt-2 pb-20'>
+                                    <input 
+                                        className='pl-4 text-md placeholder-gray-500 mr-5 h-16 text-gray-900 rounded-lg bg-gray-200 focus:outline-none focus:bg-gray-300 px-2 border-2 border-gray-500'
+                                        placeholder="Don't Specify"
+                                        value={manualLocation}
+                                        onChange={(event) => setManualLocation(event.target.value)}
+                                    ></input>
                                     <button
                                         className={`flex h-20 w-20 focus:outline-none ${buttonColor} border-4 border-zinc-400 rounded-2xl items-center justify-center`}
                                         onClick={capturePhoto}
@@ -117,6 +124,8 @@ const CameraPg = ({setPhoto}) => {
 
 CameraPg.propTypes = {
     setPhoto: PropTypes.func.isRequired,
+    setManualLocation: PropTypes.func.isRequired,
+    manualLocation: PropTypes.string.isRequired,
 }
 
 export default CameraPg;

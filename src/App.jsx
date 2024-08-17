@@ -5,6 +5,7 @@ import InformationPg from './pages/InformationPg';
 
 function App() {
   const [photo, setPhoto] = useState(null);
+  const [manualLocation, setManualLocation] = useState('');
   const [OPENAI_API_KEY, setOPENAI_API_KEY] = useState(null);
   useEffect(() => {
     const fetchKey = async () => {
@@ -18,11 +19,11 @@ function App() {
     }
     fetchKey()
   }, [])
-
+  
   return (
     <Routes>
-      <Route path="/" element={<CameraPg setPhoto={setPhoto} />} />
-      {OPENAI_API_KEY && <Route path="/info" element={<InformationPg photo={photo} apiKey={OPENAI_API_KEY} />} />}
+      <Route path="/" element={<CameraPg setPhoto={setPhoto} setManualLocation={setManualLocation} manualLocation={manualLocation}/>} />
+      {OPENAI_API_KEY && <Route path="/info" element={<InformationPg photo={photo} apiKey={OPENAI_API_KEY} manualLocation={manualLocation}/>} />}
     </Routes>
   );
 }

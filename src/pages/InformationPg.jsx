@@ -4,8 +4,9 @@ import InfoBox from '../components/InfoBox'
 import NavBar from '../components/NavBar'
 import Spinner from '../components/Spinner'
 
-const InformationPg = ({photo=null, apiKey=''}) => {
+const InformationPg = ({photo=null, apiKey='', manualLocation}) => {
   const photoUrl = photo;
+  const location = manualLocation;
   //const photoUrl = 'https://media.npr.org/assets/img/2019/12/10/steamboat_geyser-1_custom-26a3f1b17b84670c7f1b83b397847ece85c13f3c.jpg'
   const OPENAI_API_KEY = apiKey;
   const [information, setInformation] = useState(null);
@@ -40,10 +41,15 @@ const InformationPg = ({photo=null, apiKey=''}) => {
       const valley_coords = "Valleys: (Lamar Valley: 44.7804, -110.4116; Hayden Valley: 44.6852, -110.2260; Blacktail Plateau: 44.7850, -110.3780; Pelican Valley: 44.4660, -110.4350; Gibbon Valley: 44.7911, -110.5555)"
       const coordReferences = `Coordinate References -> ${geyser_coords}, ${hot_spring_coords}, ${waterfall_coords}, ${mud_pot_coords}, ${basin_coords}, ${valley_coords}`
 
+      let manualEntryLocation = '';
+      if (location != ''){
+        manualEntryLocation = `In addition, the user is roughly at ${location}.`
+      }
+
       const prompt = `This picture was taken at coordinates (${coords[0]}${coords[1]}). 
       Give 6 cool facts and/or as much details as you can about the main focus of this picture (REQUIRMENTS: Put what the main focus is in [] brackets), that should be a balance between scientific facts and quirks that may interest younger children. 
-      Identifying what this picture is depicting, please be specific as possible about the location. If it is an attraction site, compare the picture's location/coordinates with these coordinates: ${coordReferences}
-      to see if it is any of those. If the image case 1 (depicts scenery, but isn't a known attraction) or case 2(does not depict scenery), just give the man focus and 6 facts as best you can about the place in question by looking at the picture and coordinates.`
+      Identifying what this picture is depicting, please be specific as possible about the location. If it is an attraction site, compare the picture's location/coordinates with these coordinates: ${coordReferences} to see if it is any of those. 
+      ${manualEntryLocation} If the image case 1 (depicts scenery, but isn't a known attraction) or case 2(does not depict scenery), just give the man focus and 6 facts as best you can about the place in question by looking at the picture and coordinates.`
 
       setIsLoading(true);
       if (photoUrl){
@@ -98,7 +104,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
     }
 
     fetchInfo();
-  }, [OPENAI_API_KEY, photoUrl])
+  }, [OPENAI_API_KEY, photoUrl, location])
 
   return (
     <>
@@ -140,6 +146,7 @@ const InformationPg = ({photo=null, apiKey=''}) => {
 InformationPg.propTypes = {
   photo: PropTypes.string,
   apiKey: PropTypes.string,
+  manualLocation: PropTypes.string,
 }
 
 export default InformationPg
