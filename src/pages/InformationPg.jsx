@@ -114,7 +114,7 @@ const InformationPg = ({photo=null, apiKey='', manualLocation}) => {
           <div className='flex flex-col w-full max-h-screen'>
             <div className='flex'>
               <div className='w-full flex justify-center bg-gray-950'>
-                {photoUrl && <img className='rounded-t-2xl object-center w-4/5 mt-3' src={photoUrl} alt="Captured Frame" />}
+                {photoUrl && <img className='rounded-2xl object-center w-4/5 mt-3' src={photoUrl} alt="Captured Frame" />}
               </div>
             </div>
             <div className='flex justify-center items-center mt-7'>
