@@ -67,7 +67,7 @@ const CameraPg = ({setPhoto, setManualLocation, manualLocation}) => {
     return (
         <>
             <NavBar cameraPage={true}/>
-            <div className='max-h-screen overflow-scroll'>
+            <div className='max-h-screen overflow-hidden'>
                 <div className='flex min-h-screen bg-gray-950 justify-center p-0'>
                     <div className='w-4/5 items-center justify-center mt-2'>
                         <div className='overflow-hidden rounded-lg'>
