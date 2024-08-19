@@ -5,9 +5,9 @@ import NavBar from '../components/NavBar'
 import Spinner from '../components/Spinner'
 
 const InformationPg = ({photo=null, apiKey='', manualLocation}) => {
-  const photoUrl = photo;
+  //const photoUrl = photo;
   const location = manualLocation;
-  //const photoUrl = 'https://media.npr.org/assets/img/2019/12/10/steamboat_geyser-1_custom-26a3f1b17b84670c7f1b83b397847ece85c13f3c.jpg'
+  const photoUrl = "https://yellowstonenaturalist.com/wp-content/uploads/2020/01/Beehive140608J1090591H.jpg"
   const OPENAI_API_KEY = apiKey;
   const [information, setInformation] = useState(null);
   const [title, setTitle] = useState('');
@@ -31,8 +31,8 @@ const InformationPg = ({photo=null, apiKey='', manualLocation}) => {
 
   useEffect(() => {
     const fetchInfo = async() => {
-      const coords = await getCoordinates()
-      //const coords = [44.7165, -110.4185] 
+      //const coords = await getCoordinates()
+      const coords = [44.4629, -110.8298] 
       const attraction_coords = `Abyss Pool: (44.471944, -110.828056);
             Anemone Geysers: (44.460556, -110.828056);
             Beehive Geyser: (44.460556, -110.831667);
