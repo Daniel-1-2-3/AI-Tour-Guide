@@ -33,22 +33,91 @@ const InformationPg = ({photo=null, apiKey='', manualLocation}) => {
     const fetchInfo = async() => {
       const coords = await getCoordinates()
       //const coords = [44.7165, -110.4185] 
-      const geyser_coords = "Geysers: (Old Faithful: 44.4595, -110.8281; Castle Geyser: 44.4616, -110.8320; Grand Geyser: 44.4600, -110.8318; Beehive Geyser: 44.4610, -110.8322; Daisy Geyser: 44.4593, -110.8287; Lone Star Geyser: 44.5424, -110.4440; Steamboat Geyser: 44.7160, -110.4190; Grotto Geyser: 44.4575, -110.8303)"
-      const hot_spring_coords = "Hot Springs: (Grand Prismatic Spring: 44.5250, -110.8281; Mammoth Hot Springs: 44.9271, -110.6887; Yellowstone Lake Hot Springs: 44.5235, -110.4793; Sulphur Caldron: 44.7314, -110.6911; Black Pool: 44.5245, -110.8315; Morning Glory Pool: 44.4580, -110.8279; Upper Terrace Hot Springs: 44.9271, -110.6890; Sulphur Caldron: 44.7314, -110.6911; Porcelain Basin Hot Springs: 44.7313, -110.7043; Peach Spring: 44.5300, -110.8260)"
-      const waterfall_coords = "Waterfalls: (Lower Falls: 44.7267, -110.5108; Upper Falls: 44.7350, -110.5115; Tower Fall: 44.7315, -110.4531; Mystic Falls: 44.5511, -110.4852; Nez Perce Creek Falls: 44.7996, -110.4111)"
-      const mud_pot_coords = "Mud Pots: (Artists Paint Pots: 44.6413, -110.5387; Fountain Paint Pots: 44.5425, -110.5462)"
-      const basin_coords = "Basins: (Norris Geyser Basin: 44.7261, -110.6980; Upper Geyser Basin: 44.4595, -110.8281; Lower Geyser Basin: 44.5537, -110.8258; West Thumb Geyser Basin: 44.3946, -110.5264; Biscuit Basin: 44.5471, -110.7031; Porcelain Basin: 44.7313, -110.7043)"
-      const valley_coords = "Valleys: (Lamar Valley: 44.7804, -110.4116; Hayden Valley: 44.6852, -110.2260; Blacktail Plateau: 44.7850, -110.3780; Pelican Valley: 44.4660, -110.4350; Gibbon Valley: 44.7911, -110.5555)"
-      const coordReferences = `Coordinate References -> ${geyser_coords}, ${hot_spring_coords}, ${waterfall_coords}, ${mud_pot_coords}, ${basin_coords}, ${valley_coords}`
-
+      const attraction_coords = `Abyss Pool: (44.471944, -110.828056);
+            Anemone Geysers: (44.460556, -110.828056);
+            Beehive Geyser: (44.460556, -110.831667);
+Blood Geyser: (44.460556, -110.828056);
+Canary Spring: (44.976944, -110.701667);
+Castle Geyser: (44.462222, -110.831667);
+Crested Pool: (44.460556, -110.828056);
+Daisy Geyser: (44.460556, -110.828056);
+Dragon's Mouth Spring: (44.621389, -110.434722);
+Emerald Spring: (44.462222, -110.831667);
+Excelsior Geyser Crater: (44.524722, -110.837778);
+Firehole River: (44.462222, -110.831667);
+Fishing Cone: (44.462222, -110.831667);
+Geyser Hill: (44.460556, -110.828056);
+Gibbon Falls: (44.662222, -110.736667);
+Grand Canyon of Yellowstone River: (44.720000, -110.496000);
+Grand Geyser: (44.460556, -110.828056);
+Grand Prismatic Spring: (44.524722, -110.837778);
+Great Fountain Geyser: (44.462222, -110.831667);
+Grotto Geyser: (44.460556, -110.828056);
+Hayden Valley: (44.633333, -110.416667);
+Heart Spring: (44.460556, -110.828056);
+Jewel Geyser: (44.460556, -110.828056);
+LeHardys Rapids: (44.633333, -110.416667);
+Liberty Cap: (44.976944, -110.701667);
+Lion Geyser Complex: (44.460556, -110.828056);
+Morning Glory Pool: (44.460556, -110.828056);
+Mud Volcano: (44.621389, -110.434722);
+Obsidian Cliff: (44.733333, -110.733333);
+Old Faithful: (44.460556, -110.828056);
+Orange Spring Mound: (44.976944, -110.701667);
+Rainbow Pool: (44.460556, -110.828056);
+Red Spouter: (44.460556, -110.828056);
+Sapphire Pool: (44.460556, -110.828056);
+Silex Spring: (44.460556, -110.828056);
+Sizzling Basin: (44.460556, -110.828056);
+Spasmodic Geyser: (44.460556, -110.828056);
+Steamboat Geyser: (44.725000, -110.703000);
+Sulphuric Caldron: (44.621389, -110.434722);
+Yellowstone Lake: (44.462222, -110.831667);
+Mount Washburn: (44.797500, -110.434722);
+Lower Falls: (44.720000, -110.496000);
+Upper Falls: (44.720000, -110.496000);
+Silver Cord Cascades: (44.720000, -110.496000);
+Fountain Paint Pot: (44.524722, -110.837778);
+Mammoth Hot Springs: (44.976944, -110.701667);
+Midway Geyser Basin: (44.524722, -110.837778);
+White Dome Geyser: (44.524722, -110.837778);
+Terrace Springs: (44.976944, -110.701667);
+Fairy Falls: (44.524722, -110.837778);
+Firehole Falls: (44.662222, -110.736667);
+Rustic Falls: (44.976944, -110.701667);
+Undine Falls: (44.976944, -110.701667);
+Wraith Falls: (44.976944, -110.701667);
+Bunsen Peak: (44.976944, -110.701667);
+Sheepeater Cliffs: (44.733333, -110.733333);
+Sean Lake Flat: (44.733333, -110.733333);
+Artists Paintpot: (44.524722, -110.837778);
+Beryl Spring: (44.662222, -110.736667);
+Monument Geyser Basin: (44.733333, -110.733333);
+Porcelain Springs: (44.733333, -110.733333);
+Roaring Mountain: (44.733333, -110.733333);
+Norris Geyser Basin: (44.733333, -110.733333);
+Virginia Cascade: (44.662222, -110.736667);
+Aurum Geyser: (44.460556, -110.828056);
+Biscuit Basin: (44.524722, -110.837778);
+Black Sand Basin: (44.524722, -110.837778);
+Ear Spring: (44.460556, -110.828056);
+Giant Geyser: (44.460556, -110.828056);
+Solitary Geyser: (44.460556, -110.828056);
+Kepler Cascade: (44.460556, -110.828056);
+Mystic Falls: (44.524722, -110.837778);
+Calcite Springs: (44.733333, -110.733333);
+Soda Butte: (44.733333, -110.733333);
+Specimen Ridge: (44.733333, -110.733333);
+West Thumb: (44.462222, -110.831667)
+`;
       let manualEntryLocation = '';
       if (location != ''){
         manualEntryLocation = `In addition, the user is roughly at ${location}.`
       }
 
       const prompt = `This picture was taken at coordinates (${coords[0]}${coords[1]}). 
-      Give 6 cool facts and/or as much details as you can about the main focus of this picture (REQUIRMENTS: Put what the main focus is in [] brackets), that should be a balance between scientific facts and quirks that may interest younger children. 
-      Identifying what this picture is depicting, please be specific as possible about the location. If it is an attraction site, compare the picture's location/coordinates with these coordinates: ${coordReferences} to see if it is any of those. 
+      Give 6 cool facts and/or as much details as you can about the main focus of this picture (REQUIRMENTS: Put what the main focus is in [] brackets), that should be a balance between scientific, historical, and cultural facts that would interest a knowledgeable adult. 
+      Identifying what this picture is depicting, please be specific as possible about the location. If it is an attraction site, compare the picture's location/coordinates with these coordinates: ${attraction_coords} to see if it is any of those. 
       ${manualEntryLocation} If the image case 1 (depicts scenery, but isn't a known attraction) or case 2(does not depict scenery), just give the man focus and 6 facts as best you can about the place in question by looking at the picture and coordinates.`
 
       setIsLoading(true);
